@@ -1,0 +1,11 @@
+node_modules
+venv/
+_pycache_/
+*.pyc
+.env
+.env.local
+build/
+dist/
+.next
+.DS_Store
+*.log

@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    font-size: 18px;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-teal-700;
+  }
+
+  /* Visible keyboard focus everywhere - critical for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid #E08A3C;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-teal-700 text-white font-display font-semibold rounded-2xl px-6 py-4 text-lg shadow-card hover:bg-teal-900 active:scale-[0.98] transition disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply bg-marigold-500 text-white font-display font-semibold rounded-2xl px-6 py-4 text-lg shadow-card hover:bg-marigold-700 active:scale-[0.98] transition disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-outline {
+    @apply bg-white border-2 border-teal-700 text-teal-700 font-display font-semibold rounded-2xl px-6 py-4 text-lg hover:bg-teal-50 active:scale-[0.98] transition;
+  }
+  .card {
+    @apply bg-white rounded-3xl shadow-card p-6;
+  }
+  .input-field {
+    @apply w-full rounded-xl border-2 border-teal-100 px-4 py-3 text-lg text-ink placeholder:text-ink/40 focus:border-teal-500 outline-none transition;
+  }
+  .label-text {
+    @apply block font-display font-semibold text-teal-900 mb-2 text-base;
+  }
+}
