@@ -9,3 +9,5 @@ dist/
 .next
 .DS_Store
 *.log
+.env.*
+!.env.example
