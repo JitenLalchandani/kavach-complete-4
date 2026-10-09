@@ -46,6 +46,21 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/whatsapp', whatsappRoutes);
 app.use('/api/phone-check', phoneCheckRoutes);
 
+// Serve the built React frontend in production
+if (process.env.NODE_ENV === 'production') {
+  const frontendPath = path.join(__dirname, '../frontend/dist');
+
+  app.use(express.static(frontendPath));
+
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api/') || req.path === '/api') {
+      return next();
+    }
+
+    res.sendFile(path.join(frontendPath, 'index.html'));
+  });
+}
+
 app.use(notFound);
 app.use(errorHandler);
 
